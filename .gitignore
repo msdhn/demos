@@ -27,7 +27,7 @@ nbdist/
 .nb-gradle/
 bin
 
-
+.vagrant
 
 .vscode/*
 !.vscode/settings.json

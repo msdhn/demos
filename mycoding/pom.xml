@@ -14,6 +14,7 @@
         <module>codility</module>
         <module>hackerrank</module>
         <module>topcoder</module>
+        <module>coreman</module>
     </modules>
 
 

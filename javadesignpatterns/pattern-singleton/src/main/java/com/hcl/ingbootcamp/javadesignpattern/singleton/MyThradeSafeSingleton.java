@@ -6,7 +6,6 @@ package com.hcl.ingbootcamp.javadesignpattern.singleton;
 public class MyThradeSafeSingleton {
 
     private static MyThradeSafeSingleton instance;
-    ;
 
     private MyThradeSafeSingleton() {
     }

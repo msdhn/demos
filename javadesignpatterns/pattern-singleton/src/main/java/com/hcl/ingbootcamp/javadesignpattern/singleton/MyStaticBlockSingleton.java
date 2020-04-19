@@ -14,11 +14,12 @@ public class MyStaticBlockSingleton {
         try {
             singlton = new MyStaticBlockSingleton();
         } catch (Exception e) {
-            throw new RuntimeException("Exception occured in creating singleton instance");
+            throw new RuntimeException("Exception occurred in creating singleton instance");
         }
     }
 
     private MyStaticBlockSingleton() {
+        // something you can do here
     }
 
     /**

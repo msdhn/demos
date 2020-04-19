@@ -30,6 +30,6 @@
         <module>pattern-state</module>
         <module>pattern-templatemethod</module>
         <!--<module>pattern-executorframework</module>-->
-        <module>java-forkjoin</module>
+<!--        <module>java-forkjoin</module>-->
     </modules>
 </project>

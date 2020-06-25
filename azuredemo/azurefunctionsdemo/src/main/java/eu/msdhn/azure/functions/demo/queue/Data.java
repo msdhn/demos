@@ -1,4 +1,4 @@
-package eu.msdhn.azure.functions.demo.storage;
+package eu.msdhn.azure.functions.demo.queue;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 

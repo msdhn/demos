@@ -41,3 +41,6 @@ obj/
 *.ipr
 *.iws
 
+.vscode
+
+

@@ -29,7 +29,7 @@ public class BasicFilter implements Filter {
 
     public static final String STATES = "states";
     public static final String STATE = "state";
-    public static final Integer STATE_TTL = 3600;
+    public static final Integer STATE_TTL = 5 * 60 ;
     public static final String FAILED_TO_VALIDATE_MESSAGE = "Failed to validate data received from Authorization service - ";
     private String clientId = "";
     private String clientSecret = "";
@@ -79,7 +79,7 @@ public class BasicFilter implements Filter {
 
     private boolean isAuthDataExpired(HttpServletRequest httpRequest) {
         AuthenticationResult authData = AuthHelper.getAuthSessionObject(httpRequest);
-        return authData.getExpiresOnDate().before(new Date()) ? true : false;
+        return authData.getExpiresOnDate().before(new Date());
     }
 
     private void updateAuthDataUsingRefreshToken(HttpServletRequest httpRequest) throws Throwable {
@@ -280,15 +280,15 @@ public class BasicFilter implements Filter {
     }
 
     public void init(FilterConfig config) throws ServletException {
-        clientId = config.getInitParameter("client_id");
-        authority = config.getServletContext().getInitParameter("authority");
-        tenant = config.getServletContext().getInitParameter("tenant");
-        clientSecret = config.getInitParameter("secret_key");
+        authority = System.getenv("AUTHORITY");
+        tenant = System.getenv("TENANT");
+        clientId = System.getenv("CLIENT_ID");
+        clientSecret = System.getenv("CLIENT_SECRET");
     }
 
     private class StateData {
-        private String nonce;
-        private Date expirationDate;
+        private final String nonce;
+        private final Date expirationDate;
 
         public StateData(String nonce, Date expirationDate) {
             this.nonce = nonce;

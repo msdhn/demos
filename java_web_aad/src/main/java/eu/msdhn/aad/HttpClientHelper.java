@@ -1,22 +1,15 @@
-
 package eu.msdhn.aad;
-
-import java.io.BufferedReader;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.net.HttpURLConnection;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.*;
+import java.net.HttpURLConnection;
+
 /**
  * This is Helper class for all RestClient class.
- * 
+ *
  * @author Azure Active Directory Contributor
- * 
  */
 public class HttpClientHelper {
 
@@ -83,7 +76,7 @@ public class HttpClientHelper {
 
     /**
      * for bad response, whose responseCode is not 200 level
-     * 
+     *
      * @param responseCode
      * @param errorCode
      * @param errorMsg
@@ -101,7 +94,7 @@ public class HttpClientHelper {
 
     /**
      * for bad response, whose responseCode is not 200 level
-     * 
+     *
      * @param responseCode
      * @param errorCode
      * @param errorMsg
@@ -122,7 +115,7 @@ public class HttpClientHelper {
 
     /**
      * for good response
-     * 
+     *
      * @param responseCode
      * @param responseMsg
      * @return

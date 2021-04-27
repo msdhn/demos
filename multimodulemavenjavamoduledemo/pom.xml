@@ -16,9 +16,9 @@
 
     <modules>
 
-        <!--<module>daomodule</module>-->
-        <!--<module>entitymodule</module>-->
-        <!--<module>mainapp</module>-->
+        <module>daomodule</module>
+        <module>entitymodule</module>
+        <module>mainapp</module>
 
         <module>doprint</module>
         <module>printservice</module>

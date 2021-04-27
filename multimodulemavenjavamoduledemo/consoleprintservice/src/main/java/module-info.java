@@ -1,5 +1,8 @@
+import eu.msdhn.printservice.PrintService;
+import eu.msdhn.printservice.console.ConsolePrintService;
+
 module eu.msdhn.consoleprint{
     requires eu.msdhn.printservice;
 
-    provides eu.msdhn.printservice.PrintService with eu.msdhn.printservice.console.ConsolePrintService;
+    provides PrintService with ConsolePrintService;
 }

@@ -57,8 +57,8 @@ public class BasicFilter implements Filter {
                         // not authenticated
                         sendAuthRedirect(httpRequest, httpResponse);
                         return;
-                    }
-                }
+            }
+        }
                 if (isAuthDataExpired(httpRequest)) {
                     updateAuthDataUsingRefreshToken(httpRequest);
                 }

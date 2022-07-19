@@ -1,20 +1,31 @@
 package eu.msdhn.openfeigndemo.openfeigndemo.clients;
 
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.cloud.openfeign.FallbackFactory;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class PostsClientFallback implements PostsClient {
+@Slf4j
+public class PostsClientFallbackFactory implements FallbackFactory<PostsClient> {
 
     @Override
-    public List<Post> getPosts() {
-        return new ArrayList<>();
+    public PostsClient create(Throwable cause) {
+        log.error("" + cause);
+        //provide a fallback implementation
+        return new PostsClient() {
+            @Override
+            public List<Post> getPosts() {
+                return new ArrayList<>();
+            }
+
+            @Override
+            public Post updatePost(Long storeId, Post post) {
+                return null;
+            }
+        };
     }
 
-    @Override
-    public Post updatePost(Long storeId, Post post) {
-        return null;
-    }
 }

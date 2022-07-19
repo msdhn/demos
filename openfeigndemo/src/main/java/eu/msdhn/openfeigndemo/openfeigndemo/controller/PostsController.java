@@ -8,11 +8,11 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-public class TestController {
+public class PostsController {
 
     private PostsClient fooClient;
 
-    public TestController(PostsClient fooClient) {
+    public PostsController(PostsClient fooClient) {
         this.fooClient = fooClient;
     }
 

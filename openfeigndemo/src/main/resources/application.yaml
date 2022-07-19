@@ -1,0 +1,18 @@
+feign:
+  url: https://jsonplaceholder.typicode.com/
+  client:
+    config:
+      postsClient:
+        connectTimeout: 5000
+        readTimeout: 5000
+        loggerLevel: basic
+        #retryer: eu.msdhn.openfeigndemo.openfeigndemo.clients.PostsClientRequestRetryer
+        requestInterceptors:
+          - eu.msdhn.openfeigndemo.openfeigndemo.clients.PostsClientRequestInterceptor
+    hystrix:
+      enabled: true
+
+logging:
+  level:
+    eu.msdhn.openfeigndemo.openfeigndemo.clients.PostsClient: DEBUG
+

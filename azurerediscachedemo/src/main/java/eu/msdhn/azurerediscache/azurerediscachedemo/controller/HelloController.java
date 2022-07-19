@@ -1,4 +1,4 @@
-package eu.msdhn.azurerediscache.azurerediscachedemo;
+package eu.msdhn.azurerediscache.azurerediscachedemo.controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

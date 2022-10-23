@@ -1,0 +1,3 @@
+{
+  "connectionString": "InstrumentationKey=2e6f3375-00a8-4546-b14b-842316ef846c;IngestionEndpoint=https://westeurope-5.in.applicationinsights.azure.com/"
+}

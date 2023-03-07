@@ -4,46 +4,19 @@ param location string = resourceGroup().location
 param subNetNameAks string = '${virtualNetworkName}-subnet-aks'
 
 
-resource nsgAksSubnet 'Microsoft.Network/networkSecurityGroups@2022-01-01' = {
-  name: '${subNetNameAks}-nsg'
-  location: location
-  properties: {
-    securityRules: [
-      //inbound rules start
-      {
-        name: 'DenyAllInbound'
-        properties: {
-          protocol: '*'
-          sourcePortRange: '*'
-          destinationPortRange: '*'
-          sourceAddressPrefix: '*'
-          destinationAddressPrefix: '*'
-          access: 'Deny'
-          priority: 1000
-          direction: 'Inbound'
-        }
-      }
-      //inbound rules end
-
-      //outbound rules starts
-      {
-        name: 'DenyAllOutbound'
-        properties: {
-          protocol: '*'
-          sourcePortRange: '*'
-          destinationPortRange: '*'
-          sourceAddressPrefix: '*'
-          destinationAddressPrefix: '*'
-          access: 'Deny'
-          priority: 1000
-          direction: 'Outbound'
-        }
-      }
-      //outbound rules end
-    ]
+module msdhnRouteTable 'routetable.bicep' = {
+  name: 'msdhnRouteTable'
+  params:{
+     name: '${virtualNetworkName}-routetable'
   }
 }
 
+module nsgs 'nsg.bicep' = {
+  name: 'msdhnNsgs'
+  params: {
+     virtualNetworkName: virtualNetworkName
+  }
+}
 
 resource virtualNetwork 'Microsoft.Network/virtualNetworks@2019-11-01' = {
   name: virtualNetworkName
@@ -60,7 +33,10 @@ resource virtualNetwork 'Microsoft.Network/virtualNetworks@2019-11-01' = {
         properties: {
           addressPrefix: '10.0.0.0/20'
           networkSecurityGroup: {
-            id: nsgAksSubnet.id
+            id: nsgs.outputs.nsgs.nsgForAksSubnetId
+          }
+          routeTable:{
+            id: msdhnRouteTable.outputs.routeTableId
           }
         }
       }

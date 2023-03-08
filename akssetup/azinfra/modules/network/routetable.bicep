@@ -1,4 +1,4 @@
-@sys.description('same as resource group')
+@description('same as resource group')
 param location string = resourceGroup().location
 param name string
 resource msdhnRouteTable 'Microsoft.Network/routeTables@2022-07-01' = {

@@ -1,11 +1,8 @@
 param location string = resourceGroup().location
 
-@sys.description('name of the storage account')
+@description('name of the storage account')
 param accountName string
-param tagValues object = {
-  Dept: 'Finance'
-  Environment: 'Production'
-}
+
 
 resource stgAccount 'Microsoft.Storage/storageAccounts@2021-04-01' = {
   name: accountName
@@ -14,5 +11,12 @@ resource stgAccount 'Microsoft.Storage/storageAccounts@2021-04-01' = {
     name: 'Standard_LRS'
   }
   kind: 'Storage'
-  tags: tagValues
+  properties:{
+    allowBlobPublicAccess: false
+    allowCrossTenantReplication: false
+    allowSharedKeyAccess: false
+    supportsHttpsTrafficOnly: true
+  }
 }
+
+output id string = stgAccount.id

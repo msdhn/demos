@@ -1,4 +1,5 @@
 param virtualNetworkName string
+@sys.description('same as resource group')
 param location string = resourceGroup().location
 param subNetNameAks string = '${virtualNetworkName}-subnet-aks'
 

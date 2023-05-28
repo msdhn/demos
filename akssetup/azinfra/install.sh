@@ -7,8 +7,3 @@ az deployment sub create --location westeurope --template-file rg.bicep --parame
 az deployment group validate --resource-group msdhn-rg-vnet --template-file main.bicep
 az deployment group create --resource-group msdhn-rg-vnet --template-file main.bicep
 
-
-
-
-
-
